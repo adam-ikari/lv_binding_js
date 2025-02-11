@@ -6,6 +6,8 @@
 #include "native/bootstrap/render_bootstrap.hpp"
 #include "native/components/component.hpp"
 
+#define TRUE 1
+
 static TJSRuntime* qrt;
 
 static void timer_cb(uv_timer_t *handle) {
