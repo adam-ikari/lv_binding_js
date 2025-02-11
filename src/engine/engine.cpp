@@ -20,21 +20,32 @@ int main(int argc, char **argv) {
     qrt = TJS_NewRuntime();
     CHECK_NOT_NULL(qrt);
 
-    JSValue global_obj = JS_GetGlobalObject(qrt->ctx);
-    JSValue render_sym = JS_NewSymbol(qrt->ctx, "lvgljs", TRUE);
-    JSAtom render_atom = JS_ValueToAtom(qrt->ctx, render_sym);
-    JSValue render = JS_NewObjectProto(qrt->ctx, JS_NULL);
+    bool is_no_lvgl = false;
 
-    CHECK_EQ(JS_DefinePropertyValue(qrt->ctx, global_obj, render_atom, render, JS_PROP_C_W_E), TRUE);
+    for (int i = 1; i < argc; i++) {
+        if (strcmp(argv[i], "--no-lvgl") == 0) {
+            is_no_lvgl = true;
+            break;
+        }
+    }
 
-    NativeRenderInit(qrt->ctx, render);
-
-    JS_FreeAtom(qrt->ctx, render_atom);
-    JS_FreeValue(qrt->ctx, render_sym);
-    JS_FreeValue(qrt->ctx, global_obj);
-
-    hal_init();
-    WindowInit();
+    if(!is_no_lvgl) {
+        JSValue global_obj = JS_GetGlobalObject(qrt->ctx);
+        JSValue render_sym = JS_NewSymbol(qrt->ctx, "lvgljs", TRUE);
+        JSAtom render_atom = JS_ValueToAtom(qrt->ctx, render_sym);
+        JSValue render = JS_NewObjectProto(qrt->ctx, JS_NULL);
+    
+        CHECK_EQ(JS_DefinePropertyValue(qrt->ctx, global_obj, render_atom, render, JS_PROP_C_W_E), TRUE);
+    
+        NativeRenderInit(qrt->ctx, render);
+    
+        JS_FreeAtom(qrt->ctx, render_atom);
+        JS_FreeValue(qrt->ctx, render_sym);
+        JS_FreeValue(qrt->ctx, global_obj);
+        
+        hal_init();
+        WindowInit();
+    }
 
     // create timer for rendering
     static uv_timer_t handle;
