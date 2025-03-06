@@ -20,16 +20,16 @@ int main(int argc, char **argv) {
     qrt = TJS_NewRuntime();
     CHECK_NOT_NULL(qrt);
 
-    bool is_init_display = false;
+    // bool is_init_display = false;
 
-    for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "--display") == 0) {
-            is_init_display = true;
-            break;
-        }
-    }
+    // for (int i = 0; i < argc; i++) {
+    //     if (strcmp(argv[i], "--display") == 0) {
+    //         is_init_display = true;
+    //         break;
+    //     }
+    // }
 
-    if(is_init_display) {
+    // if(is_init_display) {
         JSValue global_obj = JS_GetGlobalObject(qrt->ctx);
         JSValue render_sym = JS_NewSymbol(qrt->ctx, "lvgljs", TRUE);
         JSAtom render_atom = JS_ValueToAtom(qrt->ctx, render_sym);
@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
         
         hal_init();
         WindowInit();
-    }
+    // }
 
     // create timer for rendering
     static uv_timer_t handle;
