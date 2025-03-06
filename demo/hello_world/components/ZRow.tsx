@@ -2,18 +2,20 @@ import style from "../style";
 import { View } from "lvgljs-ui";
 import React from "react";
 
-const Card = ({ children }) => {
+const ZRow = ({ children }) => {
   return (
     <View
       style={{
+        ...style.flexRow,
         ...style.noBorder,
-        ...style.card,
         ...style.autoWidth,
         ...style.autoHeight,
+        ...style.padding0
       }}
     >
       {children}
     </View>
   );
 };
-export default Card;
+
+export default ZRow;

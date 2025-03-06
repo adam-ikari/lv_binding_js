@@ -2,13 +2,12 @@ import style from "../style";
 import { View } from "lvgljs-ui";
 import React from "react";
 
-const Column = ({ children }) => {
+const ZColumn = ({ children }) => {
   return (
     <View
       style={{
         ...style.flexColumn,
-        // ...style.noBorder,
-        // ...style.card,
+        ...style.noBorder,
         ...style.autoWidth,
         ...style.autoHeight,
         ...style.padding0
@@ -18,4 +17,4 @@ const Column = ({ children }) => {
     </View>
   );
 };
-export default Column;
+export default ZColumn;

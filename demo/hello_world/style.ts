@@ -1,11 +1,6 @@
 
 export default {
-  button: {
-    "border-width": 1,
-    "border-radius": 4,
-    "border-color": "#dedfe2",
-    "shadow-width": 0,
-  },
+
   flexRow: {
     display: "flex",
     "flex-direction": "row",
