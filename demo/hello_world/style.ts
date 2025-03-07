@@ -1,6 +1,4 @@
-
 export default {
-
   flexRow: {
     display: "flex",
     "flex-direction": "row",
@@ -22,16 +20,37 @@ export default {
   autoWidth: {
     width: "auto",
   },
-  autoHeight: {
-    height: "auto",
-  },
   fullWidth: {
     width: "100%",
+  },
+  minWidth10: {
+    "min-width": 10,
+  },
+  minWidth20: {
+    "min-width": 20,
+  },
+  minWidth30: {
+    "min-width": 30,
+  },
+  minWidth40: {
+    "min-width": 40,
+  },
+  minWidth50: {
+    "min-width": 50,
   },
   fullHeight: {
     height: "100%",
   },
+  autoHeight: {
+    height: "auto",
+  },
   padding0: {
-    padding: 0
-  }
+    padding: 0,
+  },
+  padding10: {
+    padding: 10,
+  },
+  padding20: {
+    padding: 20,
+  },
 };

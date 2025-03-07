@@ -1,16 +1,22 @@
-import style from "../style";
+import common_style from "../style";
 import { View } from "lvgljs-ui";
 import React from "react";
 
-const ZRow = ({ children }) => {
+interface ZRowProps {
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+}
+
+const ZRow = ({ children, style }:ZRowProps) => {
   return (
     <View
       style={{
-        ...style.flexRow,
-        ...style.noBorder,
-        ...style.autoWidth,
-        ...style.autoHeight,
-        ...style.padding0
+        ...common_style.flexRow,
+        ...common_style.noBorder,
+        ...common_style.autoWidth,
+        ...common_style.autoHeight,
+        ...common_style.padding0,
+        ...style
       }}
     >
       {children}

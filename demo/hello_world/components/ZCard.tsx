@@ -1,15 +1,22 @@
-import style from "../style";
+import common_style from "../style";
 import { View } from "lvgljs-ui";
 import React from "react";
 
-const ZCard = ({ children }) => {
+interface ZCardProps {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}
+
+const ZCard = ({ children, style = {} }: ZCardProps) => {
   return (
     <View
       style={{
-        ...style.noBorder,
-        ...style.card,
-        ...style.autoWidth,
-        ...style.autoHeight,
+        ...common_style.noBorder,
+        ...common_style.card,
+        ...common_style.autoWidth,
+        ...common_style.autoHeight,
+        "border-radius": 4,
+        ...style
       }}
     >
       {children}

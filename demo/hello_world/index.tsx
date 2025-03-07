@@ -1,33 +1,54 @@
-import ZCard from "./components/ZCard";
-import ZColumn from "./components/ZColumn";
-import ZRow from "./components/ZRow";
-import ZButton from "./components/ZButton";
-import style from "./style";
-import { Button, Render, Text, View } from "lvgljs-ui";
+import { ZButton, ZCard, ZColumn, ZRow } from "./components";
+import common_style from "./style";
+import { Render, Text, View } from "lvgljs-ui";
 import React from "react";
 
 function App() {
   return (
     <View
       style={{
-        ...style.flexRow,
-        ...style.fullHeight,
-        ...style.fullWidth,
+        ...common_style.noBorder,
+        ...common_style.fullHeight,
+        ...common_style.fullWidth,
       }}
     >
-      <ZCard>
-        <ZColumn>
-          <Text>Button</Text>
-          <ZRow>
-            <ZButton>Default</ZButton>
-          </ZRow>
-        </ZColumn>
-      </ZCard>
-      <ZCard>
-        <ZColumn>
-          <Text>Input</Text>
-        </ZColumn>
-      </ZCard>
+      <ZRow
+        style={{
+          ...common_style.padding20,
+        }}
+      >
+        <ZCard style={common_style.card}>
+          <ZColumn>
+            <ZRow>
+              <Text>Button</Text>
+            </ZRow>
+            <ZRow>
+              <ZButton type="default" text="Default"></ZButton>
+              <ZButton type="primary" text="Primary"></ZButton>
+              <ZButton type="success" text="Success"></ZButton>
+              <ZButton type="info" text="Info"></ZButton>
+              <ZButton type="danger" text="Danger"></ZButton>
+              <ZButton type="warning" text="Warning"></ZButton>
+            </ZRow>
+            <ZRow>
+              <ZButton text="1"></ZButton>
+              <ZButton text="1"></ZButton>
+              <ZButton text="1"></ZButton>
+              <ZButton text="1"></ZButton>
+              <ZButton text="1"></ZButton>
+              <ZButton text="1"></ZButton>
+              <ZButton text="1"></ZButton>
+            </ZRow>
+          </ZColumn>
+        </ZCard>
+        <ZCard>
+          <ZColumn>
+            <ZRow>
+              <Text>Input</Text>
+            </ZRow>
+          </ZColumn>
+        </ZCard>
+      </ZRow>
     </View>
   );
 }

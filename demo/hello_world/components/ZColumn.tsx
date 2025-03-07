@@ -1,16 +1,22 @@
-import style from "../style";
+import common_style from "../style";
 import { View } from "lvgljs-ui";
 import React from "react";
 
-const ZColumn = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+  style?: React.CSSProperties;
+}
+
+const ZColumn = ({ children, style = {} }: Props) => {
   return (
     <View
       style={{
-        ...style.flexColumn,
-        ...style.noBorder,
-        ...style.autoWidth,
-        ...style.autoHeight,
-        ...style.padding0
+        ...common_style.flexColumn,
+        ...common_style.noBorder,
+        ...common_style.autoWidth,
+        ...common_style.autoHeight,
+        ...common_style.padding0,
+        ...style,
       }}
     >
       {children}
