@@ -1,5 +1,5 @@
 import { ZButton, ZCard, ZColumn, ZRow } from "./components";
-import common_style from "./style";
+import common_style from "./common_style";
 import { Render, Text, View } from "lvgljs-ui";
 import React from "react";
 

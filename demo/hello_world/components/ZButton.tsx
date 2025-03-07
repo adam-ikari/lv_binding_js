@@ -1,4 +1,4 @@
-import common_style from "../style";
+import common_style from "../common_style";
 import { Button, Text } from "lvgljs-ui";
 import React from "react";
 
@@ -9,7 +9,7 @@ interface ZButtonProps {
 }
 
 const getStyle = (type) => {
-  const style = {
+  const style : React.CSSProperties = {
     "border-width": 1,
     "border-radius": 4,
     "border-color": "#dedfe2",

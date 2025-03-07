@@ -1,4 +1,4 @@
-import common_style from "../style";
+import common_style from "../common_style";
 import { View } from "lvgljs-ui";
 import React from "react";
 
