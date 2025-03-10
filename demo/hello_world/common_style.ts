@@ -10,6 +10,12 @@ const COMMON_STYLE: Record<string, StyleProps> = {
     display: "flex",
     "flex-direction": "column",
   },
+  juestifyContentCenter: {
+    "justify-content": "center",
+  },
+  alignItemsCenter: {
+    "align-items": "center",
+  },
   noBorder: {
     "border-width": 0,
   },
@@ -31,6 +37,9 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   minWidth40: {
     "min-width": 40,
   },
+  minWidth48: {
+    "min-width": 48,
+  },
   minWidth50: {
     "min-width": 50,
   },
@@ -40,6 +49,21 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   autoHeight: {
     height: "auto",
   },
+  minHeight12: {
+    height: 12,
+  },
+  minHeight24: {
+    height: 24,
+  },
+  minHeight32: {
+    height: 32,
+  },
+  minHeight40: {
+    height: 40,
+  },
+  minHeight48: {
+    height: 48,
+  },
   padding0: {
     padding: 0,
   },
@@ -48,6 +72,15 @@ const COMMON_STYLE: Record<string, StyleProps> = {
   },
   padding20: {
     padding: 20,
+  },
+  fontSizeSmall: {
+    "font-size": 12,
+  },
+  fontSizeDafault: {
+    "font-size": 14,
+  },
+  fontSizeLarge: {
+    "font-size": 16,
   },
 };
 

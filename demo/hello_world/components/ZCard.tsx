@@ -5,7 +5,7 @@ import React from "react";
 
 // 类型定义
 interface ZCardProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   style?: StyleProps;
 }
 

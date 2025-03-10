@@ -4,7 +4,7 @@ import { View } from "lvgljs-ui";
 import React from "react";
 
 interface ZColumnProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   style?: StyleProps;
 }
 

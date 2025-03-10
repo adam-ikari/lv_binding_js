@@ -1,10 +1,23 @@
 import { COLORS, COMMON_STYLE } from "./common_style";
-import { ZButton, ZCard, ZColumn, ZRow } from "./components";
+import {
+  ZButton,
+  ZButtonSize,
+  ZButtonType,
+  ZCard,
+  ZColumn,
+  ZRow,
+} from "./components";
 import { Render, Text, View } from "lvgljs-ui";
 import React from "react";
 
-// import { StyleProps } from "./components/types";
-// import { CommonProps } from "lvgljs-ui/components/common";
+const buttonsData = [
+  { text: "Default", type: ZButtonType.Default },
+  { text: "Primary", type: ZButtonType.Primary },
+  { text: "Success", type: ZButtonType.Success },
+  { text: "Info", type: ZButtonType.Info },
+  { text: "Danger", type: ZButtonType.Danger },
+  { text: "Warning", type: ZButtonType.Warning },
+];
 
 function App() {
   return (
@@ -27,22 +40,29 @@ function App() {
             <ZRow>
               <Text>Button</Text>
             </ZRow>
+
             <ZRow>
-              <ZButton type="default" text="Default"></ZButton>
-              <ZButton type="primary" text="Primary"></ZButton>
-              <ZButton type="success" text="Success"></ZButton>
-              <ZButton type="info" text="Info"></ZButton>
-              <ZButton type="danger" text="Danger"></ZButton>
-              <ZButton type="warning" text="Warning"></ZButton>
+              {buttonsData.map((item) => (
+                <ZButton
+                  size={ZButtonSize.Small}
+                  type={item.type}
+                  text={item.text}
+                />
+              ))}
             </ZRow>
             <ZRow>
-              <ZButton text="1"></ZButton>
-              <ZButton text="1"></ZButton>
-              <ZButton text="1"></ZButton>
-              <ZButton text="1"></ZButton>
-              <ZButton text="1"></ZButton>
-              <ZButton text="1"></ZButton>
-              <ZButton text="1"></ZButton>
+              {buttonsData.map((item) => (
+                <ZButton type={item.type} text={item.text} />
+              ))}
+            </ZRow>
+            <ZRow>
+              {buttonsData.map((item) => (
+                <ZButton
+                  size={ZButtonSize.Large}
+                  type={item.type}
+                  text={item.text}
+                />
+              ))}
             </ZRow>
           </ZColumn>
         </ZCard>
