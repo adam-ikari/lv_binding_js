@@ -38,8 +38,9 @@ function App() {
         <ZCard header={<Text>Button</Text>}>
           <ZColumn>
             <ZRow>
-              {buttonsData.map((item) => (
+              {buttonsData.map((item, index) => (
                 <ZButton
+                  key={index}
                   size={ZButtonSize.Small}
                   type={item.type}
                   text={item.text}
@@ -47,13 +48,14 @@ function App() {
               ))}
             </ZRow>
             <ZRow>
-              {buttonsData.map((item) => (
-                <ZButton type={item.type} text={item.text} />
+              {buttonsData.map((item, index) => (
+                <ZButton key={index} type={item.type} text={item.text} />
               ))}
             </ZRow>
             <ZRow>
-              {buttonsData.map((item) => (
+              {buttonsData.map((item, index) => (
                 <ZButton
+                  key={index}
                   size={ZButtonSize.Large}
                   type={item.type}
                   text={item.text}

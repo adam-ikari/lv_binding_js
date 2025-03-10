@@ -44,8 +44,11 @@ const ZCard = (props: ZCardProps) => {
         ...propStyle,
       }}
     >
+      {/* header */}
       {header && <ZCardHeader>{header}</ZCardHeader>}
+      {/* content */}
       {children}
+      {/* footer */}
       {footer && <ZCardFooter>{footer}</ZCardFooter>}
     </ZColumn>
   );
