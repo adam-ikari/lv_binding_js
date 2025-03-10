@@ -26,21 +26,17 @@ function App() {
         ...COMMON_STYLE.noBorder,
         ...COMMON_STYLE.fullHeight,
         ...COMMON_STYLE.fullWidth,
-        ...{ "background-color": COLORS.PAGE_BACKGROUND },
+        "background-color": COLORS.PAGE_BACKGROUND,
       }}
     >
       <ZRow
         style={{
           ...COMMON_STYLE.padding20,
-          ...{ "background-color": COLORS.PAGE_BACKGROUND },
+          "background-color": COLORS.PAGE_BACKGROUND,
         }}
       >
-        <ZCard>
+        <ZCard header={<Text>Button</Text>}>
           <ZColumn>
-            <ZRow>
-              <Text>Button</Text>
-            </ZRow>
-
             <ZRow>
               {buttonsData.map((item) => (
                 <ZButton
