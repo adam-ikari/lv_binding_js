@@ -1,23 +1,28 @@
+import { COLORS, COMMON_STYLE } from "./common_style";
 import { ZButton, ZCard, ZColumn, ZRow } from "./components";
-import common_style from "./common_style";
 import { Render, Text, View } from "lvgljs-ui";
 import React from "react";
+
+// import { StyleProps } from "./components/types";
+// import { CommonProps } from "lvgljs-ui/components/common";
 
 function App() {
   return (
     <View
       style={{
-        ...common_style.noBorder,
-        ...common_style.fullHeight,
-        ...common_style.fullWidth,
+        ...COMMON_STYLE.noBorder,
+        ...COMMON_STYLE.fullHeight,
+        ...COMMON_STYLE.fullWidth,
+        ...{ "background-color": COLORS.PAGE_BACKGROUND },
       }}
     >
       <ZRow
         style={{
-          ...common_style.padding20,
+          ...COMMON_STYLE.padding20,
+          ...{ "background-color": COLORS.PAGE_BACKGROUND },
         }}
       >
-        <ZCard style={common_style.card}>
+        <ZCard>
           <ZColumn>
             <ZRow>
               <Text>Button</Text>

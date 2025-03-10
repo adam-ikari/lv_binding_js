@@ -1,50 +1,64 @@
-import common_style from "../common_style";
-import { StyleProps } from "./common";
+import { COLORS, COMMON_STYLE } from "../common_style";
 import { Button, Text } from "lvgljs-ui";
+import { StyleProps } from "lvgljs-ui/core/style";
 import React, { useMemo } from "react";
 
 interface ZButtonProps {
-  text?: string;
+  text: string;
   style?: StyleProps;
-  type?: string;
+  type: "default" | "primary" | "success" | "info" | "danger" | "warning";
 }
 
-const ZButton = ({ text = "", style = {}, type = "default" }: ZButtonProps) => {
-  const button_style = useMemo(() => {
-    const style: StyleProps = {
-      "border-width": 1,
-      "border-radius": 4,
-      "border-color": "#dedfe2",
-      "shadow-width": 0,
-      ...common_style.minWidth40,
-    };
-    if (type === "primary") {
-      style["background-color"] = "#007bff";
-      style["text-color"] = "white";
-    } else if (type === "success") {
-      style["background-color"] = "#28a745";
-      style["text-color"] = "white";
-    } else if (type === "info") {
-      style["background-color"] = "#6c757d";
-      style["text-color"] = "white";
-    } else if (type === "danger") {
-      style["background-color"] = "#dc3545";
-      style["text-color"] = "white";
-    } else if (type === "warning") {
-      style["background-color"] = "#ffc107";
-      style["text-color"] = "white";
-    } else {
-      style["background-color"] = "#ffffff";
-      style["text-color"] = "black";
-    }
-    return style;
+const baseStyle: StyleProps = {
+  "border-width": 1,
+  "border-radius": 4,
+  "border-color": "#dedfe2",
+  "shadow-width": 0,
+  ...COMMON_STYLE.minWidth40,
+};
+
+const typeStyleMap: Record<string, StyleProps> = {
+  primary: {
+    "background-color": COLORS.PRIMARY,
+    "text-color": COLORS.WHITE,
+  },
+  success: {
+    "background-color": COLORS.SUCCESS,
+    "text-color": COLORS.WHITE,
+  },
+  info: {
+    "background-color": COLORS.INFO,
+    "text-color": COLORS.WHITE,
+  },
+  danger: {
+    "background-color": COLORS.DANGER,
+    "text-color": COLORS.WHITE,
+  },
+  warning: {
+    "background-color": COLORS.WARNING,
+    "text-color": COLORS.WHITE,
+  },
+  default: {
+    "background-color": COLORS.WHITE,
+    "text-color": COLORS.REGULAR_TEXT,
+  },
+};
+
+const ZButton = ({
+  text = "",
+  style: propStyle = {},
+  type = "default",
+}: ZButtonProps) => {
+  const computedStyle = useMemo(() => {
+    return { ...baseStyle, ...typeStyleMap[type] };
   }, [type]);
 
   return (
-    <Button style={[button_style, style]}>
+    <Button style={{ ...computedStyle, ...propStyle }}>
       <Text>{text}</Text>
     </Button>
   );
 };
 
+export type { ZButtonProps };
 export default ZButton;
