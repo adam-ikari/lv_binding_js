@@ -10,14 +10,14 @@ interface ZCardProps {
 const ZCard = ({ children, style = {} }: ZCardProps) => {
   return (
     <View
-      style={{
-        ...common_style.noBorder,
-        ...common_style.card,
-        ...common_style.autoWidth,
-        ...common_style.autoHeight,
-        "border-radius": 4,
-        ...style
-      }}
+      style={[
+        common_style.noBorder,
+        common_style.card,
+        common_style.autoWidth,
+        common_style.autoHeight,
+        { "border-radius": 4 },
+        style,
+      ]}
     >
       {children}
     </View>
