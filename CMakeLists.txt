@@ -75,7 +75,7 @@ add_executable(lvgljs
 )
 
 if(${CMAKE_BUILD_TYPE} MATCHES Simulator)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -std=c++14")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb -std=c++11")
     set(BUILD_WITH_MIMALLOC OFF) # TODO: SDL and mimalloc don't play well together
     add_definitions(-DIS_SIM)
     target_sources(lvgljs PRIVATE
@@ -83,7 +83,7 @@ if(${CMAKE_BUILD_TYPE} MATCHES Simulator)
         src/engine/hal/simulator/mouse_cursor_icon.c
     )
 else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -std=c++14")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -std=c++11")
     add_definitions(-DIS_DEVICE)
     target_sources(lvgljs PRIVATE
         src/engine/hal/device/device.cpp
