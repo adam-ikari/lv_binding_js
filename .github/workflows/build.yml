@@ -8,7 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v3
@@ -17,7 +20,16 @@ jobs:
           fetch-depth: 0
 
       - name: Install build tools
+        if: matrix.os == 'ubuntu-24.04'
         run: sudo apt-get update && sudo apt-get install -y cmake libsdl2-dev libcurl4-openssl-dev autoconf automake libtool autoconf-archive libltdl-dev
+
+      - name: Install build tools (macOS)
+        if: matrix.os == 'macos-latest'
+        run: brew install cmake sdl2 curl autoconf automake libtool
+
+      - name: Install build tools (Windows)
+        if: matrix.os == 'windows-latest'
+        run: choco install cmake sdl2 curl autoconf automake libtool
 
       - name: Build project
         run: make simulator
