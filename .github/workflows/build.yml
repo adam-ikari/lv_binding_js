@@ -25,7 +25,7 @@ jobs:
         run: npm install
 
       - name: Install build tools
-        run: sudo apt-get update && sudo apt-get install -y cmake libsdl2-dev libcurl4-openssl-dev
+        run: sudo apt-get update && sudo apt-get install -y cmake libsdl2-dev libcurl4-openssl-dev libtool autoconf
 
       - name: Build project
         run: make simulator
