@@ -22,9 +22,7 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: 
-          - npm install yarn -g
-          - yarn
+        run: npm install yarn -g && yarn
 
       - name: Install build tools
         run: sudo apt-get update && sudo apt-get install -y cmake libsdl2-dev libcurl4-openssl-dev
