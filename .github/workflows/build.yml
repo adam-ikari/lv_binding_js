@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install build tools
-        run: sudo apt-get update && sudo apt-get install -y cmake libsdl2-dev libcurl4-openssl-dev autoconf automake libtool autoconf-archive
+        run: sudo apt-get update && sudo apt-get install -y cmake libsdl2-dev libcurl4-openssl-dev autoconf automake libtool autoconf-archive libltdl-dev
 
       - name: Build project
         run: make simulator
