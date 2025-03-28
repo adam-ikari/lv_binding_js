@@ -4,12 +4,12 @@ BUILD_SIM=build
 
 setup:
 	git submodule update --recursive --init
-	npm install
+	yarn
 
 simulator:
 	@mkdir -p $(BUILD_SIM)
 	cmake -B "$(BUILD_SIM)" -DCMAKE_BUILD_TYPE=Simulator
-	cmake --build $(BUILD_SIM) -j
+	cd $(BUILD_SIM) && make -j
 
 # Set default project argument to 'widgets' if no project is provided
 demo: simulator
