@@ -4,7 +4,7 @@ BUILD_SIM=build
 
 setup:
 	git submodule update --recursive --init
-	npm install
+	yarn
 
 simulator:
 	@mkdir -p $(BUILD_SIM)
