@@ -11,7 +11,12 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-24.04, macos-latest]
-    runs-on: ${{ matrix.os }}
+        arch: [x86_64, arm64]
+        exclude:
+          # macOS only supports arm64 on Apple Silicon
+          - os: macos-latest
+            arch: x86_64
+    runs-on: ${{ matrix.os }}-${{ matrix.arch }}
 
     steps:
       - uses: actions/checkout@v4
@@ -34,15 +39,15 @@ jobs:
         run: |
           mkdir -p dist
           if [ "${{ matrix.os }}" = "macos-latest" ]; then
-            cd build && zip -r ../dist/lvgljs-macos.zip .
+            cd build && zip -r ../dist/lvgljs-macos-${{ matrix.arch }}.zip .
           elif [ "${{ matrix.os }}" = "ubuntu-24.04" ]; then
-            cd build && zip -r ../dist/lvgljs-linux.zip .
+            cd build && zip -r ../dist/lvgljs-linux-${{ matrix.arch }}.zip .
           fi
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: lvgljs-${{ matrix.os }}
+          name: lvgljs-${{ matrix.os }}-${{ matrix.arch }}
           path: dist/*.zip
 
   release:
@@ -71,5 +76,6 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            artifacts/lvgljs-macos/lvgljs-macos.zip
-            artifacts/lvgljs-ubuntu-24.04/lvgljs-linux.zip
+            artifacts/lvgljs-macos-arm64/lvgljs-macos-arm64.zip
+            artifacts/lvgljs-ubuntu-24.04-x86_64/lvgljs-linux-x86_64.zip
+            artifacts/lvgljs-ubuntu-24.04-arm64/lvgljs-linux-arm64.zip
