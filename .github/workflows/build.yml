@@ -34,9 +34,9 @@ jobs:
         run: |
           mkdir -p dist
           if [ "${{ matrix.os }}" = "macos-latest" ]; then
-            zip -r dist/lvgljs-macos.zip build/lvgl
+            cd build && zip -r ../dist/lvgljs-macos.zip .
           elif [ "${{ matrix.os }}" = "ubuntu-24.04" ]; then
-            zip -r dist/lvgljs-linux.zip build/lvgl
+            cd build && zip -r ../dist/lvgljs-linux.zip .
           fi
 
       - name: Upload artifacts
