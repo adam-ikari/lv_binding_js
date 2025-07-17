@@ -18,16 +18,19 @@ export type MaskProps = CommonProps & {
     target: any,
     currentTarget: any,
     stopPropogation: () => void,
+    position: {x:number, y:number},
   }) => void;
   onLongPressed?: (event: {
     target: any,
     currentTarget: any,
     stopPropogation: () => void,
+    position: {x:number, y:number},
   }) => void;
   onLongPressRepeat?: (event: {
     target: any,
     currentTarget: any,
     stopPropogation: () => void,
+    position: {x:number, y:number},
   }) => void;
 };
 
