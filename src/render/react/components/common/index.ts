@@ -32,49 +32,56 @@ export type CommonProps = {
   children?: React.ReactNode;
   onClick?: (event: OnClickEvent) => void;
   onPressed?: (event: {
-    target: any,
-    currentTarget: any,
-    stopPropogation: () => void,
-    position: {x:number, y:number},
+    target: any;
+    currentTarget: any;
+    stopPropogation: () => void;
+    pos: [number, number];
+  }) => void;
+  onPressing?: (event: {
+    target: any;
+    currentTarget: any;
+    stopPropogation: () => void;
+    pos: [number, number];
   }) => void;
   onLongPressed?: (event: {
-    target: any,
-    currentTarget: any,
-    stopPropogation: () => void,
-    position: {x:number, y:number},
+    target: any;
+    currentTarget: any;
+    stopPropogation: () => void;
+    pos: [number, number];
   }) => void;
   onLongPressRepeat?: (event: {
-    target: any,
-    currentTarget: any,
-    stopPropogation: () => void,
-    position: {x:number, y:number},
+    target: any;
+    currentTarget: any;
+    stopPropogation: () => void;
+    pos: [number, number];
   }) => void;
   onPressLost?: (event: {
-    target: any,
-    currentTarget: any,
-    stopPropogation: () => void,
-    position: {x:number, y:number},
+    target: any;
+    currentTarget: any;
+    stopPropogation: () => void;
+    pos: [number, number];
   }) => void;
   onReleased?: (event: {
-    target: any,
-    currentTarget: any,
-    stopPropogation: () => void,
-    position: {x:number, y:number},
+    target: any;
+    currentTarget: any;
+    stopPropogation: () => void;
+    pos: [number, number];
   }) => void;
 };
 
 export type OnChangeEvent = {
-  target: any,
-  currentTarget: any,
-  stopPropogation: () => void,
-  value: number,
-}
+  target: any;
+  currentTarget: any;
+  stopPropogation: () => void;
+  value: number;
+};
 
 export type OnClickEvent = {
-  target: any,
-  currentTarget: any,
-  stopPropogation: () => void,
-}
+  target: any;
+  currentTarget: any;
+  stopPropogation: () => void;
+  position: {x:number, y:number},
+};
 
 export const CommonComponentApi = function ({
   compName,
@@ -154,6 +161,9 @@ export const CommonComponentApi = function ({
     },
     onPressed(fn) {
       handleEvent(comp, fn, EVENTTYPE_MAP.EVENT_PRESSED);
+    },
+    onPressing(fn) {
+      handleEvent(comp, fn, EVENTTYPE_MAP.EVENT_PRESSING);
     },
     onLongPressed(fn) {
       handleEvent(comp, fn, EVENTTYPE_MAP.EVENT_LONG_PRESSED);

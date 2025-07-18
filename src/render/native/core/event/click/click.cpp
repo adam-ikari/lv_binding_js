@@ -38,9 +38,9 @@ static JSValue GetClickPosition (JSContext* ctx, JSValueConst this_val) {
     lv_point_t point;
     lv_indev_get_point(indev, &point);
     
-    JSValue obj = JS_NewObject(ctx);
-    JS_SetPropertyStr(ctx, obj, "x", JS_NewInt32(ctx, point.x));
-    JS_SetPropertyStr(ctx, obj, "y", JS_NewInt32(ctx, point.y));
+    JSValue obj = JS_NewArray(ctx);
+    JS_SetPropertyUint32(ctx, obj, 0, JS_NewInt32(ctx, point.x));
+    JS_SetPropertyUint32(ctx, obj, 1, JS_NewInt32(ctx, point.y));
     return obj;
 };
 
@@ -100,7 +100,7 @@ JSValue WrapClickEvent (lv_event_t* e, std::string uid) {
 static const JSCFunctionListEntry component_proto_funcs[] = {
     TJS_CGETSET_DEF("pressedPoint", GetPressedPoint, NULL),
     TJS_CGETSET_DEF("pressedPointPos", GetPressedPointPos, NULL),
-    TJS_CGETSET_DEF("position", GetClickPosition, NULL),
+    TJS_CGETSET_DEF("pos", GetClickPosition, NULL),
     TJS_CFUNC_DEF("stopPropagation", 0, NativeEventStopPropagation)
 };
 
