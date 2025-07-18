@@ -32,6 +32,18 @@ static JSValue GetPressedPoint (JSContext* ctx, JSValueConst this_val) {
     return JS_UNDEFINED;
 };
 
+static JSValue GetClickPosition (JSContext* ctx, JSValueConst this_val) {
+    lv_event_t* e = static_cast<lv_event_t*>(JS_GetOpaque(this_val, WrapClickEventID));
+    lv_indev_t* indev = lv_indev_get_act();
+    lv_point_t point;
+    lv_indev_get_point(indev, &point);
+    
+    JSValue obj = JS_NewArray(ctx);
+    JS_SetPropertyUint32(ctx, obj, 0, JS_NewInt32(ctx, point.x));
+    JS_SetPropertyUint32(ctx, obj, 1, JS_NewInt32(ctx, point.y));
+    return obj;
+};
+
 static JSValue GetPressedPointPos (JSContext* ctx, JSValueConst this_val) {
     lv_event_t* e = static_cast<lv_event_t*>(JS_GetOpaque(this_val, WrapClickEventID));
     BasicComponent* comp = static_cast<BasicComponent*>(e->user_data);
@@ -88,6 +100,7 @@ JSValue WrapClickEvent (lv_event_t* e, std::string uid) {
 static const JSCFunctionListEntry component_proto_funcs[] = {
     TJS_CGETSET_DEF("pressedPoint", GetPressedPoint, NULL),
     TJS_CGETSET_DEF("pressedPointPos", GetPressedPointPos, NULL),
+    TJS_CGETSET_DEF("pos", GetClickPosition, NULL),
     TJS_CFUNC_DEF("stopPropagation", 0, NativeEventStopPropagation)
 };
 
