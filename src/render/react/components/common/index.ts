@@ -80,7 +80,7 @@ export type OnClickEvent = {
   target: any;
   currentTarget: any;
   stopPropogation: () => void;
-  position: {x:number, y:number},
+  pos: [number, number],
 };
 
 export const CommonComponentApi = function ({

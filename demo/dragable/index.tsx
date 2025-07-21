@@ -13,13 +13,20 @@ const App = () => {
               "event:" +
               JSON.stringify(e) +
               "pos:" +
-              JSON.stringify(e.pos) +
-              "coords:" +
-              JSON.stringify(e.target.coords),
+              JSON.stringify(e.pos),
           );
           setDraged(true);
           setPos(e.pos);
         }}
+        onPressed={(e) =>
+          console.log(
+            "onPressed" +
+              "event:" +
+              JSON.stringify(e) +
+              "pos:" +
+              JSON.stringify(e.pos),
+          )
+        }
       ></View>
       {isDraged && (
         <View
